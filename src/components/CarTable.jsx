@@ -1,4 +1,8 @@
-export default function CarTable({ cars = [] }) {
+import { useCars } from './CarsContext.jsx';
+
+export default function CarTable() {
+    const { cars, startEdit, deleteCar } = useCars();
+
     return (
         <div className="card">
             <section className="table-container section">
@@ -15,6 +19,7 @@ export default function CarTable({ cars = [] }) {
                             <th>Year</th>
                             <th>Color</th>
                             <th>Plate</th>
+                            <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -25,15 +30,29 @@ export default function CarTable({ cars = [] }) {
                                 <td>{car.carModel}</td>
                                 <td>{car.year}</td>
                                 <td>
- <span
-     className="color-badge"
-     style={{backgroundColor: car.color.toLowerCase()}}
- >
- {car.color}
- </span>
+                                        <span
+                                            className="color-badge"
+                                            style={{backgroundColor: car.color.toLowerCase()}}
+                                        >
+                                            {car.color}
+                                        </span>
                                 </td>
                                 <td>
                                     <span className="license-plate">{car.licensePlate}</span>
+                                </td>
+                                <td>
+                                    <button
+                                        className="btn-edit"
+                                        onClick={() => startEdit(car)}
+                                    >
+                                        Edit
+                                    </button>
+                                    <button
+                                        className="btn-delete"
+                                        onClick={() => deleteCar(car.id)}
+                                    >
+                                        Delete
+                                    </button>
                                 </td>
                             </tr>
                         ))}
