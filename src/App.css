@@ -1,0 +1,227 @@
+/* Reset (unchanged) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+td
+{
+  color: black;
+}
+/* Center page and keep your gradient */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%);
+  min-height: 100vh;
+  padding: 20px;
+
+  /* Center the container */
+  display: flex;
+  align-items: center;          /* vertical center */
+  justify-content: center;      /* horizontal center */
+}
+
+/* Main container width */
+.container {
+  max-width: 1200px;            /* slightly tighter for centering aesthetics */
+  width: 100%;
+  margin: 0 auto;               /* safe fallback */
+}
+
+/* Heading centered as before */
+h1 {
+  text-align: center;
+  color: white;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+/* NEW: a single white card wrapping form + table */
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* Remove white box styling from form/table containers.
+   Keep spacing and titles. */
+.form-container,
+.table-container {
+  background: transparent;      /* remove white */
+  padding: 0;                    /* handled by .card */
+  border-radius: 0;
+  box-shadow: none;
+  margin-bottom: 0;              /* no margins inside a single card */
+}
+
+.form-container h2,
+.table-container h2 {
+  margin-bottom: 20px;
+  color: #1e3c72;
+}
+
+/* Spacing between sections INSIDE the single card */
+.section {
+  margin-top: 24px;
+}
+.section:first-of-type {
+  margin-top: 0;
+}
+
+/* Keep your existing form styles */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+input {
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+input:focus {
+  outline: none;
+  border-color: #2a5298;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;              /* avoid overflow on small screens */
+}
+
+button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 600;
+}
+
+.btn-submit {
+  background: #2a5298;
+  color: white;
+  flex: 1;
+  min-width: 180px;             /* keeps a nice width if it wraps */
+}
+.btn-submit:hover {
+  background: #1e3c72;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(42, 82, 152, 0.4);
+}
+
+.btn-cancel {
+  background: #e0e0e0;
+  color: #333;
+}
+.btn-cancel:hover {
+  background: #d0d0d0;
+}
+
+/* Table tweaks stay the same, but card now scrolls horizontally if needed */
+.table-container {
+  overflow-x: auto;
+}
+
+.table-container h2 {
+  margin-bottom: 20px;
+  color: #1e3c72;
+}
+
+.empty-message {
+  text-align: center;
+  color: #999;
+  padding: 40px;
+  font-size: 18px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: #2a5298;
+  color: white;
+}
+
+th {
+  padding: 15px;
+  text-align: left;
+  font-weight: 600;
+}
+
+td {
+  padding: 15px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+tbody tr:hover {
+  background: #f5f5f5;
+}
+
+.color-badge {
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 20px;
+  color: white;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  border: 2px solid rgba(0,0,0,0.1);
+}
+
+.license-plate {
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  font-size: 16px;
+  color: #1e3c72;
+  letter-spacing: 2px;
+}
+
+.btn-edit {
+  background: #10b981;
+  color: white;
+  padding: 8px 16px;
+  margin-right: 8px;
+}
+.btn-edit:hover {
+  background: #059669;
+}
+
+.btn-delete {
+  background: #ef4444;
+  color: white;
+  padding: 8px 16px;
+}
+.btn-delete:hover {
+  background: #dc2626;
+}
+
+/* Responsive (unchanged except minor polish) */
+@media (max-width: 768px) {
+  /* Top-level centering still works; card can grow taller than the viewport */
+  body {
+    align-items: flex-start;     /* avoid over-centering on very tall content */
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  table {
+    font-size: 14px;
+  }
+
+  th, td {
+    padding: 10px;
+  }
+}
